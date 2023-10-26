@@ -1,7 +1,7 @@
 # React + Vite
 
 - Used news api 
--- class based components
+- class based components
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
