@@ -8,7 +8,7 @@ export class Newsitems extends Component {
         return (
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="/newsdetails">
-                <img className="rounded-t-lg" src={imageurl} alt="" />
+                <img className="rounded-t-lg" src={ imageurl ? imageurl : "https://images.wsj.net/im-874721/social" } alt="" />
             </a>
             <div className="p-5">
                 <a href="/newsdetails">
