@@ -50,6 +50,14 @@ export default class News extends Component {
     };
   }
 
+  async componentDidMount(){
+    let url = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=e9c5bc30bf9f416784636792d432827a";
+    let data = await fetch(url);
+    let parsedData = await data.json();
+    console.log(parsedData);
+    this.setState({articles : parsedData.articles})
+  }
+
   render() {
     return (
         <div className='container my-3 m-auto'>
