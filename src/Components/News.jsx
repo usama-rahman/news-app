@@ -46,17 +46,31 @@ export default class News extends Component {
     // console.log("Hello I am a Constractor from News");
     this.state = {
       articles: this.articles,
-      loading : false
+      loading : false,
+      page:1
     };
   }
 
   async componentDidMount(){
-    let url = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=e9c5bc30bf9f416784636792d432827a";
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=e9c5bc30bf9f416784636792d432827a&page=${this.state.page + 1} `;
     let data = await fetch(url);
     let parsedData = await data.json();
     console.log(parsedData);
     this.setState({articles : parsedData.articles})
   }
+
+  handelPrevClick = async () => {
+    console.log("Prev")
+  }
+
+  handelNextClick = async () => {
+    console.log("Next")
+    this.state({
+      page: this.state.page + 1,
+
+    })
+  }
+
 
   render() {
     return (
@@ -68,6 +82,23 @@ export default class News extends Component {
             return  <Newsitems key={element.url} title = {element.title} discription = {element.description} imageurl = {element.urlToImage} newsurl={element.url} />
           })}
           </div>
+        <div className='justify-center flex'>
+        <div className='flex justify-between w-1/2 my-10'>
+            <button 
+            disabled={this.state.page<=1}
+            onClick={this.handelPrevClick}
+            type="button" 
+            className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-md text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+              &larr; Previous
+            </button>
+            <button 
+            onClick={this.handelNextClick}
+            type="button" 
+            className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                Next &rarr;
+            </button>
+          </div>
+        </div>
         </div>
     )
   }

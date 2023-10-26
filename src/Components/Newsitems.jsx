@@ -22,6 +22,7 @@ export class Newsitems extends Component {
                     Read more
                 </a>
             </div>
+           
         </div>
         )
     }
