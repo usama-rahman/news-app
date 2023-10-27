@@ -2,7 +2,6 @@ import { Component } from 'react'
 import Newsitems from './Newsitems'
 
 export default class News extends Component {
-
   articles = [
     {
         "source":{
@@ -70,7 +69,7 @@ export default class News extends Component {
 
     })
   }
-  
+
   render() {
     return (
         <div className='container my-3 m-auto'>
