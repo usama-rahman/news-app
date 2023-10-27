@@ -70,8 +70,7 @@ export default class News extends Component {
 
     })
   }
-
-
+  
   render() {
     return (
         <div className='container my-3 m-auto'>
